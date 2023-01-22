@@ -1,5 +1,14 @@
 # Important Stuff for Devs <!-- omit in toc -->
 
+## Symbol Meaning
+
+| Symbol | Meaning       |
+| :----: | :-----------: |
+| ✅     | Done          |
+| 🚧     | Doing         |
+| ❌     | Won't Do      |
+| ⚙️     | Under Testing |
+
 ## TODO
 
 ### High Priority
@@ -16,7 +25,7 @@
 
 #### Task Related
 
-- add new task
+- 🚧 add new task
 - remove task
 - edit task
 - show tasks
