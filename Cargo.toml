@@ -2,7 +2,9 @@
 name = "what-to-do-cli"
 version = "0.1.0"
 edition = "2021"
-
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+description = "Task manager available directly from your terminal"
+repository = "https://github.com/ed-henrique/what-to-do-cli"
+authors = ["Eduardo Henrique <edu.hen.fm@gmail.com>"]
 
 [dependencies]
+clap = { version = "4.1.1", features = ["derive"] }
