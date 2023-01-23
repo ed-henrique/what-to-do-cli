@@ -1,28 +1,31 @@
+mod tasks;
+
 use clap::{Parser, Subcommand};
+use tasks::add_task;
 
 #[derive(Parser)]
 #[command(author, version, about, long_about = None)]
 struct Cli {
     #[command(subcommand)]
-    command: Option<Commands>,
+    command: Commands,
 }
 
 #[derive(Subcommand)]
 enum Commands {
     Task {
         #[command(subcommand)]
-        command: Option<Tasks>,
+        command: Tasks,
     },
     Profile {
         #[command(subcommand)]
-        command: Option<Profiles>,
+        command: Profiles,
     },
 }
 
 #[derive(Subcommand)]
 enum Tasks {
     Show {},
-    Add {},
+    Add { task_message: String },
     Edit {},
     Remove {},
 }
@@ -36,5 +39,21 @@ enum Profiles {
 }
 
 fn main() {
-    let _cli = Cli::parse();
+    let cli = Cli::parse();
+
+    match &cli.command {
+        Commands::Task { command } => match &command {
+            Tasks::Show {} => {}
+            Tasks::Add { task_message } => add_task(task_message),
+            Tasks::Edit {} => {}
+            Tasks::Remove {} => {}
+        },
+
+        Commands::Profile { command } => match &command {
+            Profiles::Show {} => {}
+            Profiles::Add {} => {}
+            Profiles::Edit {} => {}
+            Profiles::Remove {} => {}
+        },
+    }
 }
