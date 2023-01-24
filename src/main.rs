@@ -1,7 +1,7 @@
 mod tasks;
 
 use clap::{Parser, Subcommand};
-use tasks::add_task;
+use tasks::{add_task, show_tasks};
 
 #[derive(Parser)]
 #[command(author, version, about, long_about = None)]
@@ -43,7 +43,7 @@ fn main() {
 
     match &cli.command {
         Commands::Task { command } => match &command {
-            Tasks::Show {} => {}
+            Tasks::Show {} => show_tasks(),
             Tasks::Add { task_message } => add_task(task_message),
             Tasks::Edit {} => {}
             Tasks::Remove {} => {}
