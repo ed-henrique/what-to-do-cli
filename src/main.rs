@@ -1,4 +1,4 @@
-mod tasks;
+pub mod tasks;
 
 use clap::{Parser, Subcommand};
 use tasks::{add_task, show_tasks};
