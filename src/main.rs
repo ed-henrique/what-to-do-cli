@@ -1,7 +1,9 @@
-mod tasks;
+pub mod db;
+pub mod tasks;
 
 use clap::{Parser, Subcommand};
 use tasks::{add_task, show_tasks};
+use db::establish_connection;
 
 #[derive(Parser)]
 #[command(author, version, about, long_about = None)]
@@ -40,11 +42,12 @@ enum Profiles {
 
 fn main() {
     let cli = Cli::parse();
+    let conn = &mut establish_connection();
 
     match &cli.command {
         Commands::Task { command } => match &command {
-            Tasks::Show {} => show_tasks(),
-            Tasks::Add { task_message } => add_task(task_message),
+            Tasks::Show {} => show_tasks(conn),
+            Tasks::Add { task_message } => _ = add_task(conn, task_message),
             Tasks::Edit {} => {}
             Tasks::Remove {} => {}
         },

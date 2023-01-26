@@ -1,0 +1,4 @@
+CREATE TABLE tasks (
+    id INTEGER NOT NULL PRIMARY KEY,
+    task_name VARCHAR NOT NULL
+)
