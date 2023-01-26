@@ -30,13 +30,16 @@
 
 ### High Priority
 
-- 🚧 use SQLite for local db
+- ✅ use SQLite for local db
 
 ### Features
 
 - support tags
 - multiple profiles
-- support Windows, Linux and MacOS
+- support
+  - Windows
+  - 🚧 Linux
+  - MacOS
 - use wtd as an alias to what-to-do-cli
 
 ### Functions
@@ -44,8 +47,8 @@
 #### Task Related
 
 - ✅ add new task
-- remove task
-- edit task
+- ✅ remove task
+- ✅ edit task
 - ✅ show tasks
   
 #### Profile Related
