@@ -27,6 +27,17 @@ pub fn delete_task(conn: &mut SqliteConnection, task_id: &i32) -> () {
     println!("Deleted task: {}!", task_id);
 }
 
+pub fn edit_task(conn: &mut SqliteConnection, task_id: &i32, new_task_name: &str) -> () {
+    use schema::tasks::dsl::{task_name, tasks};
+
+    diesel::update(tasks.find(task_id))
+        .set(task_name.eq(new_task_name))
+        .execute(conn)
+        .unwrap();
+
+    println!("Updated task: {}!", new_task_name);
+}
+
 pub fn show_tasks(conn: &mut SqliteConnection) -> () {
     use schema::tasks::dsl::*;
 
