@@ -2,8 +2,8 @@ pub mod db;
 pub mod tasks;
 
 use clap::{Parser, Subcommand};
-use tasks::{add_task, show_tasks};
 use db::establish_connection;
+use tasks::{add_task, delete_task, show_tasks};
 
 #[derive(Parser)]
 #[command(author, version, about, long_about = None)]
@@ -29,7 +29,7 @@ enum Tasks {
     Show {},
     Add { task_message: String },
     Edit {},
-    Remove {},
+    Delete { task_id: i32 },
 }
 
 #[derive(Subcommand)]
@@ -37,7 +37,7 @@ enum Profiles {
     Show {},
     Add {},
     Edit {},
-    Remove {},
+    Delete {},
 }
 
 fn main() {
@@ -47,16 +47,16 @@ fn main() {
     match &cli.command {
         Commands::Task { command } => match &command {
             Tasks::Show {} => show_tasks(conn),
-            Tasks::Add { task_message } => _ = add_task(conn, task_message),
+            Tasks::Add { task_message } => add_task(conn, task_message),
             Tasks::Edit {} => {}
-            Tasks::Remove {} => {}
+            Tasks::Delete { task_id } => delete_task(conn, task_id),
         },
 
         Commands::Profile { command } => match &command {
             Profiles::Show {} => {}
             Profiles::Add {} => {}
             Profiles::Edit {} => {}
-            Profiles::Remove {} => {}
+            Profiles::Delete {} => {}
         },
     }
 }
