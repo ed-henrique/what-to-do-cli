@@ -46,7 +46,7 @@ fn main() {
 
     match &cli.command {
         Commands::Task { command } => match &command {
-            Tasks::Show {} => _ = show_tasks(conn),
+            Tasks::Show {} => show_tasks(conn),
             Tasks::Add { task_message } => _ = add_task(conn, task_message),
             Tasks::Edit {} => {}
             Tasks::Remove {} => {}

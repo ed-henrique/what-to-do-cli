@@ -1,5 +1,5 @@
 use diesel::prelude::*;
-use crate::schema::tasks;
+use super::schema::tasks;
 
 #[derive(Queryable)]
 pub struct Task {

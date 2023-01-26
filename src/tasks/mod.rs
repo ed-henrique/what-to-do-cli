@@ -16,7 +16,7 @@ pub fn add_task(conn: &mut SqliteConnection, task_name: &str) -> usize {
 }
 
 pub fn show_tasks(conn: &mut SqliteConnection) -> () {
-    use self::schema::tasks::dsl::*;
+    use schema::tasks::dsl::*;
 
     let results = tasks
         .load::<Task>(conn)
